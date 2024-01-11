@@ -1,8 +1,6 @@
-<%- include ./partials/header.ejs %>
-<%- include ./partials/navbar.ejs %>
-<%-include ./partials/sidebar.ejs %>
+<%- include ('./partials/header.ejs') %> <%- include ('./partials/navbar.ejs')
+%> <%- include ('./partials/sidebar.ejs') %>
 
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -472,15 +470,9 @@
                   <li class="page-item">
                     <a href="#" class="page-link">&laquo;</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link">1</a>
-                  </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link">2</a>
-                  </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link">3</a>
-                  </li>
+                  <li class="page-item"><a href="#" class="page-link">1</a></li>
+                  <li class="page-item"><a href="#" class="page-link">2</a></li>
+                  <li class="page-item"><a href="#" class="page-link">3</a></li>
                   <li class="page-item">
                     <a href="#" class="page-link">&raquo;</a>
                   </li>
@@ -853,7 +845,5 @@
   </section>
   <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
 
-<%- include ./partials/footer.ejs %>
-<%- include ./partials/js.ejs %>
+<%- include ('./partials/footer.ejs') %> <%- include ('./partials/js.ejs') %>
