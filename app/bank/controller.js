@@ -1,4 +1,4 @@
-const Nominal = require('./model');
+const Bank = require('./model');
 
 module.exports = {
     index: async (req, res) => {
@@ -10,50 +10,50 @@ module.exports = {
                 message: alertMessage,
                 status: alertStatus
             }
-            const nominal = await Nominal.find()
-            res.render('admin/nominal/view_nominal', {
-                nominal,
+            const bank = await Bank.find()
+            res.render('admin/bank/view_bank', {
+                bank,
                 alert
             })
         } catch (err) {
             req.flash('alertMessage', `${err.message}`)
             req.flash('alertStatus', 'danger')
-            res.redirect('/nominal')
+            res.redirect('/bank')
 
         }
     },
     viewCreate: async (req, res) => {
         try {
-            res.render('admin/nominal/create')
+            res.render('admin/bank/create')
         } catch (err) {
             req.flash('alertMessage', `${err.message}`)
             req.flash('alertStatus', 'danger')
-            res.redirect('/nominal')
+            res.redirect('/bank')
         }
     },
     actionCreate: async (req, res) => {
         try {
             const {
-                coinName,
-                coinQuantity,
-                price
+                name,
+                nameBank,
+                noRekening
             } = req.body;
 
-            let nominal = await Nominal({
-                coinName,
-                coinQuantity,
-                price
+            let bank = await Bank({
+                name,
+                nameBank,
+                noRekening
             })
-            await nominal.save();
+            await bank.save();
 
-            req.flash('alertMessage', "Berhasil tambah nominal!!")
+            req.flash('alertMessage', "Berhasil tambah bank!!")
             req.flash('alertStatus', "success")
 
-            res.redirect('/nominal');
+            res.redirect('/bank');
         } catch (err) {
             req.flash('alertMessage', `${err.message}`)
             req.flash('alertStatus', 'danger')
-            res.redirect('/nominal')
+            res.redirect('/bank')
         }
     },
     viewEdit: async (req, res) => {
@@ -62,18 +62,18 @@ module.exports = {
                 id
             } = req.params;
 
-            const nominal = await Nominal.findOne({
+            const bank = await Bank.findOne({
                 _id: id
             })
 
-            res.render('admin/nominal/edit', {
-                nominal
+            res.render('admin/bank/edit', {
+                bank
             })
 
         } catch (err) {
             req.flash('alertMessage', `${err.message}`)
             req.flash('alertStatus', 'danger')
-            res.redirect('/nominal')
+            res.redirect('/bank')
         }
     },
 
@@ -83,27 +83,27 @@ module.exports = {
                 id
             } = req.params;
             const {
-                coinName,
-                coinQuantity,
-                price
+                name,
+                nameBank,
+                noRekening
             } = req.body;
 
-            await Nominal.findOneAndUpdate({
+            await Bank.findOneAndUpdate({
                 _id: id
             }, {
-                coinName,
-                coinQuantity,
-                price
+                name,
+                nameBank,
+                noRekening
             });
 
-            req.flash('alertMessage', "Berhasil ubah nominal!!")
+            req.flash('alertMessage', "Berhasil ubah bank!!")
             req.flash('alertStatus', "success")
 
-            res.redirect('/nominal')
+            res.redirect('/bank')
         } catch (err) {
             req.flash('alertMessage', `${err.message}`)
             req.flash('alertStatus', 'danger')
-            res.redirect('/nominal')
+            res.redirect('/bank')
         }
     },
     actionDelete: async (req, res) => {
@@ -112,18 +112,18 @@ module.exports = {
                 id
             } = req.params;
 
-            await Nominal.findOneAndDelete({
+            await Bank.findOneAndDelete({
                 _id: id
             });
 
-            req.flash('alertMessage', "Berhasil hapus nominal!!")
+            req.flash('alertMessage', "Berhasil hapus bank!!")
             req.flash('alertStatus', "success")
 
-            res.redirect('/nominal');
+            res.redirect('/bank');
         } catch (err) {
             req.flash('alertMessage', `${err.message}`)
             req.flash('alertStatus', 'danger')
-            res.redirect('/nominal')
+            res.redirect('/bank')
         }
     }
 }
