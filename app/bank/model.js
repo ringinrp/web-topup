@@ -4,7 +4,7 @@ let bankSchema = mongoose.Schema({
         type: String,
         require: [true, 'Nama pemilik harus diisi']
     },
-    nameBank: {
+    bankName: {
         type: String,
         require: [true, 'Nama bank harus diisi']
     },
@@ -12,6 +12,8 @@ let bankSchema = mongoose.Schema({
         type: String,
         require: [true, 'Nomer rekening bank harus diisi']
     },
-}, {timestamps : true})
+}, {
+    timestamps: true
+})
 
 module.exports = mongoose.model('Bank', bankSchema)

@@ -1,0 +1,4 @@
+GET http://localhost:3000/api/v1/players/landingpage
+
+###
+GET http://localhost:3000/api/v1/players/603152e0a4dd027eefadde60/detail
